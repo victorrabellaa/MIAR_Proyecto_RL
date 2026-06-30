@@ -7,3 +7,8 @@ Repositorio para el desarrollo del proyecto de Aprendizaje por Refuerzo.
 - Python 3.8 
 - Miniconda
 - Jupyter/Visual Studio Code
+
+
+#### Problemas mac 
+
+pip install tensorflow-macos==2.13.0 tensorflow-metal==1.0.1 

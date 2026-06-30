@@ -1,35 +1,33 @@
-name: miar_rl
-channels:
-  - conda-forge
-dependencies:
-  - python=3.8
-  - pip
+# miar_rl — Apple Silicon (arm64) + Python 3.8
+# Python 3.8 arm64 is available via conda-forge / miniforge.
+# Usage with conda:
+#   conda create -n miar_rl -c conda-forge python=3.8
+#   conda activate miar_rl
+#   pip install --upgrade pip
+#   pip install -r requirements.txt
 
-  # --- Jupyter / notebook tooling (from conda-forge) ---
-  - jupyter
-  - jupyterlab
-  - notebook
-  - ipykernel
-  - ipywidgets
+# --- Scientific core ---
+numpy==1.24.3           # last numpy compatible with py3.8 + TF 2.13
+scipy==1.10.1
+matplotlib==3.7.5
+pillow==10.4.0
+h5py==3.11.0
 
-  # --- Scientific + ML/RL stack via pip (native Apple Silicon wheels) ---
-  - pip:
-      # Scientific core
-      - numpy==1.24.3          # last numpy compatible with py3.8 + TF 2.13
-      - scipy==1.10.1
-      - matplotlib==3.7.5
-      - pillow==10.4.0
-      - h5py==3.11.0
+# --- Deep learning ---
+tensorflow==2.13.0      # last TF supporting py3.8; native arm64; bundles Keras 2.13
+torch==2.0.1            # 2.2+ needs typing-extensions>=4.8, conflicts with TF 2.13
 
-      # Deep learning
-      - tensorflow==2.13.0     # 2.13.1 has NO tensorflow-macos arm64 build; 2.13.0 does. Bundles Keras 2.13
-      - torch==2.0.1           # 2.2+ requires typing-extensions>=4.8, conflicts with TF 2.13
+# --- Reinforcement learning ---
+keras-rl2==1.0.5        # uses tensorflow.keras (Keras 2 API)
+gym==0.25.2             # classic step/reset API expected by keras-rl2
+pyglet==1.5.27          # gym classic-control rendering
 
-      # Reinforcement learning
-      - keras-rl2==1.0.5       # uses tensorflow.keras (Keras 2 API)
-      - gym==0.25.2            # classic step/reset API expected by keras-rl2
-      - pyglet==1.5.27         # gym classic-control rendering
+# --- Jupyter ---
+jupyter
+jupyterlab
+ipykernel
+ipywidgets
 
-      # Optional: Apple Silicon GPU acceleration for TensorFlow (Metal).
-      # Must match TF 2.13 -> use 1.0.1. Leave commented unless you need it.
-      # - tensorflow-metal==1.0.1
+# --- Optional: Apple Silicon GPU acceleration for TensorFlow (Metal) ---
+# Must match TF 2.13 -> use 1.0.1. Uncomment only if you need GPU.
+# tensorflow-metal==1.0.1
