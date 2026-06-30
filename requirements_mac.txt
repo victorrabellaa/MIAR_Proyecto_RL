@@ -21,6 +21,7 @@ torch==2.0.1            # 2.2+ needs typing-extensions>=4.8, conflicts with TF 2
 keras-rl2==1.0.5        # uses tensorflow.keras (Keras 2 API)
 gym==0.25.2             # classic step/reset API expected by keras-rl2
 pyglet==1.5.27          # gym classic-control rendering
+pygame>=2.5
 
 # --- Jupyter ---
 jupyter
