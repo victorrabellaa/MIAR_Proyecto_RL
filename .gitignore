@@ -31,3 +31,10 @@ Thumbs.db
 # Files
 *.pdf
 *.zip
+weights/
+videos/
+gifs/
+*.h5f*
+*.mp4
+__pycache__/
+.ipynb_checkpoints/
